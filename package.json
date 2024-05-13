@@ -1,5 +1,5 @@
 {
-  "name": "capacitor-appmetrica",
+  "name": "capacitor-v4-appmetrica",
   "version": "1.0.0",
   "description": "Appmetrica capacitor plugin",
   "main": "dist/plugin.cjs.js",
@@ -17,10 +17,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rediska1114/capacitor-appmetrica.git.git"
+    "url": "git+https://github.com/nikich5/capacitor-appmetrica.git"
   },
   "bugs": {
-    "url": "https://github.com/rediska1114/capacitor-appmetrica.git/issues"
+    "url": "https://github.com/nikich5/capacitor-appmetrica/issues"
   },
   "keywords": [
     "capacitor",
