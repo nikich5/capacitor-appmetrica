@@ -110,7 +110,11 @@ public class AppmetricaPlugin extends Plugin {
     public void reportEvent(PluginCall call) {
         String name = call.getString("name");
         JSObject parameters = call.getObject("parameters");
-        YandexMetrica.reportEvent(name, parameters.toString());
+        if (parameters == null) {
+            YandexMetrica.reportEvent(name, "");
+        } else {
+            YandexMetrica.reportEvent(name, parameters.toString());
+        }
         call.success();
     }
 
