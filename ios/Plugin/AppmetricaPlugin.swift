@@ -146,7 +146,7 @@ public class AppmetricaPlugin: CAPPlugin {
             call.reject(error.localizedDescription)
         })
 
-        call.success()
+        call.resolve()
     }
 
     @objc func reportReferralUrl(_ call: CAPPluginCall) {
@@ -159,7 +159,7 @@ public class AppmetricaPlugin: CAPPlugin {
         }
 
         YMMYandexMetrica.reportReferralUrl(url)
-        call.success()
+        call.resolve()
     }
 
     @objc
@@ -170,7 +170,7 @@ public class AppmetricaPlugin: CAPPlugin {
 
         YMMYandexMetrica.setUserProfileID(id)
 
-        call.success()
+        call.resolve()
     }
 
     @objc
