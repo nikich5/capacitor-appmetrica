@@ -17,7 +17,7 @@ public class CapacitrorAppMetricaDeviceIDListener  implements AppMetricaDeviceID
     public void onLoaded(@Nullable String s) {
         JSObject res = new JSObject();
         res.put("deviceID", s);
-        call.success(res);
+        call.resolve(res);
     }
 
     @Override

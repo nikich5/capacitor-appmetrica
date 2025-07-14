@@ -39,7 +39,7 @@ public class AppmetricaPlugin extends Plugin {
             YandexMetricaConfig config = toYandexMetricaConfig(call);
             YandexMetrica.activate(context, config);
             enableActivityAutoTracking();
-            call.success();
+            call.resolve();
         } catch (JSONException e) {
             call.reject(e.getLocalizedMessage(), e);
         }
@@ -48,33 +48,33 @@ public class AppmetricaPlugin extends Plugin {
     @PluginMethod
     public void pauseSession(PluginCall call) {
         YandexMetrica.pauseSession(getActivity());
-        call.success();
+        call.resolve();
     }
 
     @PluginMethod
     public void sendEventsBuffer(PluginCall call) {
         YandexMetrica.sendEventsBuffer();
-        call.success();
+        call.resolve();
     }
 
     @PluginMethod
     public void resumeSession(PluginCall call) {
         YandexMetrica.resumeSession(getActivity());
-        call.success();
+        call.resolve();
     }
 
     @PluginMethod
     public void setLocationTracking(PluginCall call) {
         Boolean enabled = call.getBoolean("enabled");
         YandexMetrica.setLocationTracking(enabled);
-        call.success();
+        call.resolve();
     }
 
     @PluginMethod
     public void setStatisticsSending(PluginCall call) {
         Boolean enabled = call.getBoolean("enabled");
         YandexMetrica.setStatisticsSending(getContext(), enabled);
-        call.success();
+        call.resolve();
     }
 
     @PluginMethod
@@ -82,7 +82,7 @@ public class AppmetricaPlugin extends Plugin {
         JSObject location = call.getObject("location");
         try {
             YandexMetrica.setLocation(toLocation(location));
-            call.success();
+            call.resolve();
         } catch (JSONException e) {
             call.reject(e.getLocalizedMessage(), e);
         }
@@ -92,7 +92,7 @@ public class AppmetricaPlugin extends Plugin {
     public void reportAppOpen(PluginCall call) {
         String url = call.getString("url");
         YandexMetrica.reportAppOpen(url);
-        call.success();
+        call.resolve();
     }
 
     @PluginMethod
@@ -103,7 +103,7 @@ public class AppmetricaPlugin extends Plugin {
         Throwable errorThrowable = message.length() > 0 ? new Throwable(message) : null;
         YandexMetrica.reportError(identifier, errorThrowable);
 
-        call.success();
+        call.resolve();
     }
 
     @PluginMethod
@@ -115,21 +115,21 @@ public class AppmetricaPlugin extends Plugin {
         } else {
             YandexMetrica.reportEvent(name, parameters.toString());
         }
-        call.success();
+        call.resolve();
     }
 
     @PluginMethod
     public void reportReferralUrl(PluginCall call) {
         String referralUrl = call.getString("referralUrl");
         YandexMetrica.reportReferralUrl(referralUrl);
-        call.success();
+        call.resolve();
     }
 
     @PluginMethod
     public void setUserProfileID(PluginCall call) {
         String id = call.getString("id");
         YandexMetrica.setUserProfileID(id);
-        call.success();
+        call.resolve();
     }
 
     @PluginMethod
@@ -143,7 +143,7 @@ public class AppmetricaPlugin extends Plugin {
 
         try {
             YandexMetrica.reportUserProfile(toProfile(updates));
-            call.success();
+            call.resolve();
         } catch (JSONException e) {
             e.printStackTrace();
             call.reject(e.getLocalizedMessage());
